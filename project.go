@@ -135,7 +135,7 @@ func (c *Client) UpdateProject(project Project) error {
 	if res.StatusCode == 404 {
 		return errors.New("Not Found")
 	}
-	if res.StatusCode != 200 {
+	if res.StatusCode != 200 && res.StatusCode != 204 {
 		decoder := json.NewDecoder(res.Body)
 		var er errorsResult
 		err = decoder.Decode(&er)
